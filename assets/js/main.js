@@ -11,15 +11,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  document.querySelectorAll('main a[href^="http://"], main a[href^="https://"]').forEach(function(link) {
+    if (link.origin !== window.location.origin) {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    }
+  });
+
   var newsGrid = document.querySelector('.news-grid');
   if (newsGrid) {
     var entries = Array.prototype.slice.call(newsGrid.querySelectorAll(':scope > .news-entry'));
     var twoColumnQuery = window.matchMedia('(min-width: 769px)');
 
     function renderNewsEntries() {
-      var fragment = document.createDocumentFragment();
       var columns;
-      var columnIndex = 0;
 
       function createColumns() {
         columns = document.createElement('div');
@@ -33,21 +38,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
         columns.appendChild(left);
         columns.appendChild(right);
-        columnIndex = 0;
+        newsGrid.appendChild(columns);
       }
 
-      function appendColumns() {
-        if (columns && (columns.children[0].children.length || columns.children[1].children.length)) {
-          fragment.appendChild(columns);
+      function removeEmptyColumns() {
+        if (columns && !columns.children[0].children.length && !columns.children[1].children.length) {
+          columns.remove();
         }
       }
 
+      function columnHeight(column) {
+        return Array.prototype.reduce.call(column.children, function(total, child) {
+          var styles = window.getComputedStyle(child);
+          return total + child.offsetHeight + parseFloat(styles.marginBottom);
+        }, 0);
+      }
+
+      function shortestColumn() {
+        var left = columns.children[0];
+        var right = columns.children[1];
+        return columnHeight(left) <= columnHeight(right) ? left : right;
+      }
+
+      newsGrid.innerHTML = '';
+
       if (!twoColumnQuery.matches) {
         entries.forEach(function(entry) {
-          fragment.appendChild(entry);
+          newsGrid.appendChild(entry);
         });
-        newsGrid.innerHTML = '';
-        newsGrid.appendChild(fragment);
         return;
       }
 
@@ -55,23 +73,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
       entries.forEach(function(entry) {
         if (entry.classList.contains('news-entry-wide')) {
-          appendColumns();
-          fragment.appendChild(entry);
+          removeEmptyColumns();
+          newsGrid.appendChild(entry);
           createColumns();
           return;
         }
 
-        columns.children[columnIndex % 2].appendChild(entry);
-        columnIndex += 1;
+        shortestColumn().appendChild(entry);
       });
 
-      appendColumns();
-      newsGrid.innerHTML = '';
-      newsGrid.appendChild(fragment);
+      removeEmptyColumns();
     }
 
     if (entries.length) {
-      renderNewsEntries();
+      if (document.readyState === 'complete') {
+        renderNewsEntries();
+      } else {
+        window.addEventListener('load', renderNewsEntries, { once: true });
+      }
 
       if (twoColumnQuery.addEventListener) {
         twoColumnQuery.addEventListener('change', renderNewsEntries);
@@ -79,6 +98,69 @@ document.addEventListener('DOMContentLoaded', function() {
         twoColumnQuery.addListener(renderNewsEntries);
       }
     }
+  }
+
+  var lightboxImages = document.querySelectorAll('.news-lightbox-image');
+  if (lightboxImages.length) {
+    var lightbox = document.createElement('div');
+    lightbox.className = 'image-lightbox';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Expanded image');
+
+    var lightboxImage = document.createElement('img');
+    lightboxImage.alt = '';
+
+    var lightboxClose = document.createElement('button');
+    lightboxClose.type = 'button';
+    lightboxClose.className = 'image-lightbox-close';
+    lightboxClose.setAttribute('aria-label', 'Close expanded image');
+    lightboxClose.textContent = '×';
+
+    lightbox.appendChild(lightboxImage);
+    lightbox.appendChild(lightboxClose);
+    document.body.appendChild(lightbox);
+
+    function openLightbox(image) {
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+    }
+
+    lightboxImages.forEach(function(image) {
+      image.addEventListener('click', function() {
+        openLightbox(image);
+      });
+
+      image.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(image);
+        }
+      });
+    });
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
   }
 
   // Video thumbnail grid — click to play in modal

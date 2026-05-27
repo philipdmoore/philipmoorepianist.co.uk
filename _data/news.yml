@@ -1,15 +1,25 @@
+- image: news/coe-bartok-bologna-2026.jpg
+  caption: "Section photo with incredible colleagues Siwan Rhys and Anaëlle Tourret, playing Bartók Music for Strings, Percussion and Celeste (COE/Rattle)."
+  location: "Bologna"
+  date: "April 2026"
+
 - image: news/IMG_5518.jpg
   caption: "In rehearsal with COE/Robin Ticciati and Golda Schultz, ahead of European tour and Prom."
   location: "Musiikkitalo, Helsinki"
   date: "August 2025"
 
 - image: news/CCG.jpg
-  caption: "CCG recording session for \"The Sextets\" (Steve Reich), due for release Spring 2026."
+  caption: "CCG recording session for \"Steve Reich: The Sextets\"."
   location: "Kings Place"
   date: "August 2025"
+  media:
+    - type: spotify
+      spotify_id: "album/256Vv3jhxXUT3BRXabGqAU"
+      height: 352
 
 - image: news/IMG_4804.jpg
-  caption: "The crazy world of Frank Zappa. In rehearsal with LPO."
+  caption: "The crazy world of Frank Zappa – in rehearsal with LPO."
+  location: "Henry Wood Hall"
   date: "March 2025"
 
 - image: news/IMG_4159.jpg
@@ -21,7 +31,8 @@
   date: "April 2024"
 
 - image: news/IMG_3529.jpg
-  caption: "The most luminous, heavenly-sounding celeste I've played – sheer joy! On tour with COE, Kronberg and Bonn."
+  caption: "The most luminous, heavenly-sounding celeste I've played – sheer joy! On tour with COE."
+  location: "Kronberg"
   date: "September 2023"
 
 - image: news/608865ba.jpg
@@ -30,7 +41,7 @@
   date: "September 2023"
 
 - image: news/IMG_3406.jpg
-  caption: "Team keyboard (the typing pool) for Turangalîla with LSO at EIF and on tour. This extraordinary piece first hit me when I heard it live at the Free Trade Hall as an 11-year schoolboy, and I've never forgotten the impact of those sounds from another universe. Is there a greater expression of joy in all of music? Backstage at Usher Hall with Cynthia Millar, Peter Donohoe, Liz Burley."
+  caption: "Team keyboard (the typing pool) for Turangalîla with LSO at EIF and on tour. I’ve never forgotten the impact of hearing this extraordinary piece live at the Free Trade Hall as an 11-year-old schoolboy: those sounds from another universe! Is there a greater expression of joy in all music? Backstage at Usher Hall with Cynthia Millar, Peter Donohoe, Liz Burley."
   date: "August 2023"
 
 - image: news/IMG_3261.jpg
@@ -39,19 +50,19 @@
   date: "June 2023"
 
 - image: news/IMG_3190.jpg
-  caption: |-
-    Film cameras at the Roundhouse Chalk Farm and a London orchestra in attendance... that's all I'm allowed to say for now.
-
-    Update August 2023: [now I can reveal](https://youtu.be/qZ9DaB7xRZs)
+  caption: "Film cameras at the Roundhouse Chalk Farm and a London orchestra in attendance... that's all I'm allowed to say for now."
   date: "June 2023"
+  update: "Update August 2023: [now I can reveal](https://youtu.be/qZ9DaB7xRZs)"
 
 - type: image_stack
   items:
     - image: news/IMG_3039.jpg
-      caption: "Elbphilharmonie Hamburg looking gloriously resplendent in the spring sunshine... this is what can happen when there is the vision and courage to create something spectacular for the arts! COE tour."
+      caption: "Elbphilharmonie Hamburg looking gloriously resplendent in the spring sunshine... this is what can happen when there is the vision and courage to create something spectacular for the arts!"
       date: "April 2023"
     - image: news/IMG_3040.jpg
       caption: "not your average dressing room"
+    - image: news/IMG_2529.jpg
+      caption: "the frustration"
 
 - image: news/2abe2e61.jpg
   caption: "RFH rehearsal with London Sinfonietta for the brilliant Reich/Richter."
@@ -106,7 +117,7 @@
   date: "May 2019"
 
 - image: news/rattle-bear-hug.jpg
-  caption: "A much-appreciated bear hug from SSR, after my LSO debut playing Petrushka. Barbican."
+  caption: "A much-appreciated bear hug from Sir Simon Rattle, after my LSO debut playing Petrushka."
   date: "September 2017"
   media:
     - type: spotify
@@ -128,9 +139,6 @@
 - image: news/20170512_170804.jpg
   caption: "With CCG at the newly-opened Elbphilharmonie (cost 866 million €). No idea I'd packed the perfect rehearsal shirt!"
   date: "May 2017"
-
-- image: news/IMG_2529.jpg
-  caption: "the frustration"
 
 - image: news/IMG_2383.jpg
   caption: "Backstage at Opera City Tokyo with the great man."
@@ -157,7 +165,7 @@
   date: "May 2016"
 
 - image: news/IMG_1704.jpg
-  caption: "CCG at Helsingin Musiikkitalo Finland."
+  caption: "CCG and Steve Reich at Helsingin Musiikkitalo Finland."
   date: "August 2015"
 
 - type: image_pair
@@ -172,7 +180,8 @@
   date: "November 2011"
 
 - image: news/22062008195.jpg
-  caption: "Note to self: never move a rehearsal piano which doesn't have an A-frame. Whoops! Orkney. (we did get asked back)"
+  caption: "Note to self: never move a rehearsal piano which doesn't have an A-frame. Whoops! (we did get asked back)"
+  location: "St Magnus Festival, Orkney"
   date: "June 2008"
 
 - image: news/07062008165.jpg

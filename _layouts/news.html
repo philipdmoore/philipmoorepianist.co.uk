@@ -29,7 +29,7 @@ layout: default
 <div class="news-entry">
   <div class="image-pair">
     {% for img in entry.images %}
-    <img src="{{ '/assets/images/' | append: img | relative_url }}" alt="" loading="lazy">
+    <img src="{{ '/assets/images/' | append: img | relative_url }}" alt="" class="news-lightbox-image" tabindex="0">
     {% endfor %}
   </div>
   {% if entry.caption or entry.date %}
@@ -44,7 +44,7 @@ layout: default
 <div class="news-entry">
   {% for item in entry.items %}
   <div class="image-stack-item">
-    <img src="{{ '/assets/images/' | append: item.image | relative_url }}" alt="" loading="lazy">
+    <img src="{{ '/assets/images/' | append: item.image | relative_url }}" alt="" class="news-lightbox-image" tabindex="0">
     {% if item.caption or item.date %}
     <div class="caption">
       {% if item.caption %}{{ item.caption | markdownify }}{% endif %}
@@ -57,11 +57,12 @@ layout: default
 
 {% else %}
 <div class="news-entry{% if entry.layout == 'wide' %} news-entry-wide{% endif %}">
-  <img src="{{ '/assets/images/' | append: entry.image | relative_url }}" alt="" loading="lazy">
+  <img src="{{ '/assets/images/' | append: entry.image | relative_url }}" alt="" class="news-lightbox-image" tabindex="0">
   <div class="caption">
     {% if entry.caption %}{{ entry.caption | markdownify }}{% endif %}
     {% if entry.location %}<p class="news-meta">{{ entry.location }}</p>{% endif %}
     {% if entry.date %}<p class="news-meta">{{ entry.date }}</p>{% endif %}
+    {% if entry.update %}<div class="news-update">{{ entry.update | markdownify }}</div>{% endif %}
   </div>
   {% if entry.media %}
   <div class="news-media-list">
