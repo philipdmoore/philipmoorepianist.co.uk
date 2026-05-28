@@ -684,28 +684,103 @@ a.video-card-link {
 }
 
 /* ===== Recordings ===== */
-.recording-links {
-  list-style: none;
-  margin: 1.5rem 0 2.5rem;
-}
-
-.recording-links li {
-  margin-bottom: 0.85rem;
-}
-
-.recording-links a {
-  font-size: 0.95rem;
-  transition: color var(--transition-speed), padding-left var(--transition-speed);
-}
-
-.recording-links a:hover {
-  padding-left: 0.25rem;
-}
-
 .spotify-embed {
   margin: 2rem 0;
   border-radius: 12px;
   overflow: hidden;
+}
+
+.recordings-intro {
+  margin: 2rem 0 1.5rem;
+  color: var(--color-text-light);
+}
+
+.recordings-catalogue {
+  margin-top: 3rem;
+}
+
+.recording-section {
+  margin-top: 3.5rem;
+}
+
+.recording-section h2 {
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--type-scale-4);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.65rem;
+}
+
+.recording-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.recording-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
+  min-height: 116px;
+  overflow: hidden;
+  transition: border-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.recording-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.recording-cover-link {
+  background: #ddd;
+  display: block;
+  min-height: 116px;
+}
+
+.recording-cover {
+  aspect-ratio: 1;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.recording-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 0.95rem 1rem;
+}
+
+.recording-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 0 0.45rem;
+}
+
+.recording-title a {
+  text-decoration: none;
+}
+
+.recording-title a:hover {
+  text-decoration: underline;
+}
+
+.recording-artist,
+.recording-release {
+  color: var(--color-text-light);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.recording-release {
+  margin-top: 0.45rem;
 }
 
 /* ===== Images ===== */
@@ -817,6 +892,10 @@ main > img {
     grid-template-columns: 1fr;
   }
 
+  .recording-grid {
+    grid-template-columns: 1fr;
+  }
+
   .site-nav a {
     font-size: 1.75rem;
   }
@@ -835,6 +914,28 @@ main > img {
   .site-title { font-size: 1.25rem; }
 
   h1 { font-size: var(--type-scale-3); }
+
+  .recording-card {
+    grid-template-columns: 88px minmax(0, 1fr);
+    min-height: 88px;
+  }
+
+  .recording-cover-link {
+    min-height: 88px;
+  }
+
+  .recording-info {
+    padding: 0.8rem;
+  }
+
+  .recording-title {
+    font-size: 0.95rem;
+  }
+
+  .recording-artist,
+  .recording-release {
+    font-size: 0.82rem;
+  }
 
   .review-quote {
     font-size: 0.95rem;

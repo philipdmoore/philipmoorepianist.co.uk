@@ -10,9 +10,26 @@ Most of my recordings appear here:
 
 {% include spotify.html id="playlist/48Ts3CFkxt9bpD43HZpY1w?si=da473c07b432482a" height="352" %}
 
-[Music for 18 in Hi-Res Lossless Dolby Atmos (Apple Music Classical)](https://classical.music.apple.com/gb/album/1671919893)
-
-These are not on Spotify:
-
-- [Sensations of Travel, Hebrides Ensemble](https://www.delphianrecords.com/products/dcd34198)
-- [Messiaen Chamber Works, Hebrides Ensemble](https://www.linnrecords.com/recording-messiaen-chamber-works)
+<div class="recordings-catalogue">
+  {% for section in site.data.recordings %}
+    <section class="recording-section" aria-labelledby="recording-section-{{ forloop.index }}">
+      <h2 id="recording-section-{{ forloop.index }}">{{ section.category }}</h2>
+      <div class="recording-grid">
+        {% for album in section.albums %}
+          <article class="recording-card">
+            <a class="recording-cover-link" href="{{ album.url }}" aria-label="{{ album.title }} album page">
+              <img class="recording-cover" src="{{ '/assets/images/recordings/' | append: album.cover | relative_url }}" alt="{{ album.title }} album cover" loading="lazy">
+            </a>
+            <div class="recording-info">
+              <h3 class="recording-title">
+                <a href="{{ album.url }}">{{ album.title }}</a>
+              </h3>
+              <p class="recording-artist">{{ album.artist }}</p>
+              <p class="recording-release">Released {{ album.released }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>
