@@ -16,4 +16,6 @@ Philip is a member of the Colin Currie Group and has performed and broadcast ext
 
 Originally from the Vale of Evesham and now based in London, Philip enjoys exploring cities and landscapes on foot between engagements. Away from the piano, he is a keen runner and skier, and is always on the lookout for good coffee and interesting wines.
 
-Downloadable biographies are available below: <a href="{{ '/assets/downloads/philip-moore-short-biography.docx' | relative_url }}" download>short biography</a> and <a href="{{ '/assets/downloads/philip-moore-full-biography.docx' | relative_url }}" download>full biography</a>.
+## Biographies
+
+<a href="{{ '/assets/downloads/philip-moore-full-biography.docx' | relative_url }}" download>Full biography</a> &nbsp; <a href="{{ '/assets/downloads/philip-moore-short-biography.docx' | relative_url }}" download>Short biography</a>
